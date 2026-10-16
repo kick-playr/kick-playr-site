@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title: messages.metadataTitle,
         icons: {icon: '/favicon.ico', apple: '/kick-playr-logo.png'},
-        description: messages.everythingYourFootballClubNeedsTeamsMembersPaymentsSchedulesAndCommunicationAllInOneApp,
+        description: messages.heroDescription,
     };
 }
 

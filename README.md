@@ -1,6 +1,29 @@
 # kick-playr. landing page
 
-Next.js 15 / React 19 / TypeScript prototype for grassroots football club SaaS.
+Next.js 15 / React 19 / TypeScript marketing website for the proposed kick-playr
+club operations service, informed by the existing FC RWW application.
+
+## Product reference
+
+[Product functionality and website content brief](docs/PRODUCT-FUNCTIONALITY.md)
+records the German application's functionality reviewed on 16 October 2026,
+including a walkthrough of all 15 admin menu items and their read-only disclosures,
+source-supported workflows, integration limits and guidance for accurate marketing
+copy. It also compares the admin, trainer and both member profiles, and documents
+an admin walkthrough of the B team chat, message menus, image preview and plus
+menu. Expanded settings cover voucher visibility, trial-training lead times,
+themes and club-wide chat mappings; archived email failures include diagnostic
+and delivery-report details. Business actions and message sending were not tested.
+
+The operational FC RWW application runs separately at `http://localhost:3001`.
+This repository serves the marketing website on port **8080**. Its dashboard is
+illustrative; club administration happens in the separate app and API.
+
+The product reference centres on **bexio-backed member administration**: trial
+registration, onboarding, contributions, clothing vouchers, season transitions,
+member self-service and configured team chat. General match scheduling,
+self-service club provisioning and multi-tenant SaaS readiness are not established
+by the functionality review.
 
 ## Start
 
@@ -12,12 +35,33 @@ npm run dev
 Visit http://localhost:8080. For production: `npm run build && npm start`.
 
 ## Included
-Responsive hero, dashboard concept, six features, workflow, pilot pricing, FAQ, pilot contact form, mobile navigation, and original brand-board image at `public/brand-concept.png`.
+Responsive hero, illustrative trainer and member previews, eight feature pillars,
+admin/coach/member role comparison, bexio integration explanation, workflow, pilot
+pricing, eight-question FAQ, email-based pilot contact form, mobile navigation and language
+selector. The supplied logo is `public/kick-playr-logo.png`; `public/favicon.ico`
+contains multiple icon sizes. The original concept board remains in
+`public/brand-concept.png`.
+
+Public copy is adapted from the functionality brief in all four languages. It
+covers teams/contacts, trials/onboarding, training/seasons, bexio contributions,
+clothing vouchers, configured team chat, seasonal operations/reporting and member
+self-service. The FAQ distinguishes the existing German reference app from the
+proposed kick-playr offer and the website's four-language support. No real member
+data or club metrics appear in the workflow preview. The header logo is 88px on
+desktop, 72px on tablets and 64px on phones, with its wordmark retained.
+
+On phones and tablets up to 900px wide, body copy is 17px, controls are 16px and
+supporting text is at least 14px. The dashboard reflows for narrow screens.
 
 ## Important
 The pilot form currently opens an email draft using `mailto:pilot@kickplayr.app`; this address is illustrative and not verified or connected. Replace with a working backend and real contact address before launch. No server-side lead collection exists in this prototype.
 
-The website uses illustrative club data. Pilot availability, price, domain registration, and trademark clearance are not confirmed. Add privacy/legal pages, consent, accessibility checks and localized pages before publication.
+The website uses illustrative club data. Pilot availability, price, domain
+registration and trademark clearance are not confirmed. The public kick-playr
+offer is separate from the existing FC RWW deployment. Before publication, review
+privacy/legal requirements, accessibility, translation quality and product claims
+against the functionality brief. Website translation support does not establish
+multilingual support in the German FC RWW application.
 
 ## Translations
 
