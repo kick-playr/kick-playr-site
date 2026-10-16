@@ -1,12 +1,17 @@
 import type {Metadata} from 'next';
+import {getTranslations} from '../intl/server';
 import './globals.css';
 
-export const metadata: Metadata = {
-    title: 'kick-playr. | Less admin. More football.',
-    description: 'Everything your football club needs. Teams, members, payments, schedules and communication – all in one app.'
-};
-export default function RootLayout({children}: { children: React.ReactNode }) {
-    return <html lang="en">
-    <body>{children}</body>
-    </html>
+export async function generateMetadata(): Promise<Metadata> {
+    const {messages} = await getTranslations();
+    return {
+        title: messages.metadataTitle,
+        icons: {icon: '/favicon.ico', apple: '/kick-playr-logo.png'},
+        description: messages.everythingYourFootballClubNeedsTeamsMembersPaymentsSchedulesAndCommunicationAllInOneApp,
+    };
+}
+
+export default async function RootLayout({children}: {children: React.ReactNode}) {
+    const {locale} = await getTranslations();
+    return <html lang={locale}><body>{children}</body></html>;
 }
