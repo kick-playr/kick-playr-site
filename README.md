@@ -95,6 +95,13 @@ Run translation checks with `node --test tests/intl.test.cjs`.
 
 ## News content
 
+`/sitemap.xml` is generated on each request and includes the homepage, news index
+and every published news slug across all four languages. Drafts and future-dated
+posts are excluded using the same rules as the news pages. Translations share a
+single URL, so each article appears once. Set `SITE_URL` to the public origin in
+your hosting environment (default: `https://kick-playr.ch`). New Markdown articles
+are included after deployment; scheduled articles appear when their date arrives.
+
 News uses Hugo-style Markdown with YAML front matter in the root /news directory, rendered by Next.js (no separate Hugo installation). The homepage shows the latest three stories; /news lists all published stories and /news/[slug] renders each article in the site theme.
 
 Use filenames like my-story.en.md, my-story.de.md, my-story.fr.md and my-story.it.md. The filename without its locale is the URL slug. English is the fallback when a translation is missing. Required front matter: title, description, date (quoted YYYY-MM-DD), language (en/de/fr/it), and optional draft: true. Drafts and future-dated stories are hidden. Published stories sort newest first. Markdown supports headings, links, lists and emphasis; raw HTML is sanitized.
