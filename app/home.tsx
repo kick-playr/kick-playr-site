@@ -1,9 +1,11 @@
 'use client';
-import {useState, useTransition} from 'react';
+import {useState} from 'react';
+import SiteHeader from './site-header';
+import SiteFooter from './site-footer';
+import NewsCards from './news-cards';
+import type {NewsSummary} from '../lib/news';
 import Image from 'next/image';
-import {useRouter} from 'next/navigation';
-import {setLocale} from '../intl/actions';
-import {locales, type Locale} from '../intl/locale';
+import type {Locale} from '../intl/locale';
 import type {Messages} from '../intl/messages';
 import {
     ArrowRight,
@@ -22,12 +24,8 @@ import {
     X
 } from 'lucide-react';
 
-const languageNames: Record<Locale, string> = {en: 'English', de: 'Deutsch', fr: 'Français', it: 'Italiano'};
 
-export default function Home({locale, messages: t}: {locale: Locale; messages: Messages}) {
-    const router = useRouter();
-    const [changingLanguage, startLanguageChange] = useTransition();
-    const [languageError, setLanguageError] = useState(false);
+export default function Home({locale, messages: t, news}: {locale: Locale; messages: Messages; news: NewsSummary[]}) {
     const linkBexio = (text: string) => text.split(/(\bbexio\b)/gi).map((part, index) =>
         /^bexio$/i.test(part) ? <a key={index} className="bexio-link" href="https://www.bexio.com/"
             target="_blank" rel="noopener noreferrer" aria-label={part + ' — ' + t.externalLinkNewTab}
@@ -67,7 +65,6 @@ export default function Home({locale, messages: t}: {locale: Locale; messages: M
         [t.onboardingPeopleTitle, t.onboardingPeopleDescription],
     ];
 
-    const [menu, setMenu] = useState(false);
     const [email, setEmail] = useState('');
     const [club, setClub] = useState('');
     const [submitted, setSubmitted] = useState(false);
@@ -80,35 +77,7 @@ export default function Home({locale, messages: t}: {locale: Locale; messages: M
         setSubmitted(true)
     };
     return <>
-        <header className="nav wrap"><a href="#top" className="logo"><Image src="/kick-playr-logo.png" alt="" width={88} height={88} priority/>kick-playr<span>.</span></a>
-            <nav id="primary-nav" className={menu ? 'links open' : 'links'}><a onClick={() => setMenu(false)}
-                                                              href="#features">{t.features}</a><a
-                onClick={() => setMenu(false)} href="#how">{t.howItWorks}</a><a onClick={() => setMenu(false)}
-                                                                              href="#pricing">{t.pricing}</a><a
-                onClick={() => setMenu(false)} href="#pilot">{t.forClubs}</a></nav>
-            <a className="nav-cta" href="#pilot">{t.joinThePilot}<ArrowRight size={16}/></a>
-            <div className="language-control">
-                <select className="language-select" aria-label={t.language} value={locale}
-                        disabled={changingLanguage} aria-busy={changingLanguage}
-                        onChange={event => {
-                            const nextLocale = event.target.value;
-                            setLanguageError(false);
-                            startLanguageChange(async () => {
-                                try {
-                                    await setLocale(nextLocale);
-                                    router.refresh();
-                                } catch {
-                                    setLanguageError(true);
-                                }
-                            });
-                        }}>
-                    {locales.map(language => <option key={language} value={language} lang={language}>{languageNames[language]}</option>)}
-                </select>
-                {languageError && <span className="language-error" role="alert">{linkBexio(t.languageChangeError)}</span>}
-            </div>
-            <button className="menu" onClick={() => setMenu(!menu)} aria-label={t.toggleMenu} aria-expanded={menu} aria-controls="primary-nav">{menu ? <X/> :
-                <Menu/>}</button>
-        </header>
+        <SiteHeader locale={locale} messages={t}/>
         <main id="top">
             <section className="hero">
                 <div className="hero-glow"/>
@@ -307,6 +276,7 @@ export default function Home({locale, messages: t}: {locale: Locale; messages: M
                     </form>
                 </div>
             </section>
+            <section className="wrap section" aria-labelledby="news-title"><div className="kicker">{t.newsEyebrow}</div><h2 id="news-title">{t.news}</h2><p className="news-intro">{t.newsDescription}</p><NewsCards articles={news} locale={locale} readMore={t.newsReadMore}/><a className="btn secondary" href="/news">{t.newsAll}<ArrowRight size={18}/></a></section>
             <section className="faq wrap">
                 <div className="kicker">{linkBexio(t.goodToKnow)}</div>
                 <h2>{linkBexio(t.frequentlyAskedQuestions)}</h2>{questions.map(([q, a]) =>
@@ -314,12 +284,6 @@ export default function Home({locale, messages: t}: {locale: Locale; messages: M
                     <summary><span>{linkBexio(q)}</span><ChevronDown size={20}/></summary>
                     <p>{linkBexio(a)}</p></details>)}</section>
         </main>
-        <footer>
-            <div className="wrap footer-inner">
-                <div><a className="logo" href="#top"><Image src="/kick-playr-logo.png" alt="" width={56} height={56}/>kick-playr<span>.</span></a><p>{linkBexio(t.lessAdminMoreFootball)}</p></div>
-                <div><a href="#features">{t.features}</a><a href="#pricing">{t.pricing}</a><a href="#pilot">{t.joinPilot}</a></div>
-            </div>
-            <div className="wrap fineprint">{linkBexio(t.copyrightSymbol)} {new Date().getFullYear()} {linkBexio(t.kickPlayrConceptWebsiteBrandAndDomainAvailabilityNotYetConfirmed)}</div>
-        </footer>
+        <SiteFooter messages={t}/>
     </>
 }

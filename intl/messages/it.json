@@ -179,5 +179,12 @@
   "originTitle": "Dal FC RWW a kick-playr.",
   "originDescription": "La versione originale del servizio è stata progettata e sviluppata per il FC Rot-Weiss Winikon (FCRWW) a Uster, in Svizzera. FCRWW è il primo club pilota del servizio SaaS kick-playr.",
   "originBadge": "PRIMO CLUB PILOTA",
-  "originAppLink": "Apri l’app FC RWW"
+  "originAppLink": "Apri l’app FC RWW",
+  "news": "Notizie",
+  "newsEyebrow": "A BORDO CAMPO",
+  "newsDescription": "Novità da kick-playr e dai nostri club pilota.",
+  "newsReadMore": "Leggi l’articolo",
+  "newsAll": "Tutte le notizie",
+  "newsBack": "Torna alle notizie",
+  "newsHome": "Torna alla home"
 }

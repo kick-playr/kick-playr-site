@@ -9,16 +9,19 @@
     "maint:update": "ncu -u -t minor && npm install && npm audit fix && npm install"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^1.58.0",
     "next": "^16.4.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "lucide-react": "^1.58.0"
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1"
   },
   "devDependencies": {
-    "typescript": "^5.9.3",
     "@types/node": "^22.20.5",
     "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0"
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^5.9.3"
   },
   "overrides": {
     "js-yaml": {

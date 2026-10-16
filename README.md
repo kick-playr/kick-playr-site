@@ -86,3 +86,13 @@ native language names. A selection is saved in an HTTP-only cookie for
 one year and refreshes the page translations, metadata, and document language.
 
 Run translation checks with `node --test tests/intl.test.cjs`.
+
+## News content
+
+News uses Hugo-style Markdown with YAML front matter in the root /news directory, rendered by Next.js (no separate Hugo installation). The homepage shows the latest three stories; /news lists all published stories and /news/[slug] renders each article in the site theme.
+
+Use filenames like my-story.en.md, my-story.de.md, my-story.fr.md and my-story.it.md. The filename without its locale is the URL slug. English is the fallback when a translation is missing. Required front matter: title, description, date (quoted YYYY-MM-DD), language (en/de/fr/it), and optional draft: true. Drafts and future-dated stories are hidden. Published stories sort newest first. Markdown supports headings, links, lists and emphasis; raw HTML is sanitized.
+
+See news/fcrww-joins-kick-playr-pilot.en.md for the example. Its date is an example publication date; update it to the intended publication date before publishing. Add or edit Markdown files and redeploy for production changes. In development, refresh the page to see edits.
+
+News can optionally specify image: "/news/filename.jpg" and a translated imageAlt in front matter. Place the image in public/news; it appears on cards and article pages. The FCRWW club logo was sourced from https://www.fcrww.ch/wp-content/uploads/2025/03/fcrww-lolo-400x400-1.jpg (the official website header logo).

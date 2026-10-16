@@ -179,5 +179,12 @@
   "originTitle": "Vom FC RWW zu kick-playr.",
   "originDescription": "Die ursprüngliche Version des Dienstes wurde für den FC Rot-Weiss Winikon (FCRWW) in Uster entwickelt und umgesetzt. FCRWW ist der erste Pilotverein für den SaaS-Service kick-playr.",
   "originBadge": "ERSTER PILOTVEREIN",
-  "originAppLink": "FC-RWW-App öffnen"
+  "originAppLink": "FC-RWW-App öffnen",
+  "news": "Neuigkeiten",
+  "newsEyebrow": "VOM SPIELFELDRAND",
+  "newsDescription": "Neuigkeiten von kick-playr und unseren Pilotvereinen.",
+  "newsReadMore": "Artikel lesen",
+  "newsAll": "Alle Neuigkeiten",
+  "newsBack": "Zurück zu Neuigkeiten",
+  "newsHome": "Zur Startseite"
 }
