@@ -41,12 +41,12 @@ Visit http://localhost:8080. For production: `npm run build && npm start`.
 
 Google Tag Manager loads in the document head on every page. Set `GTM_ID` in
 `.env.local` or your hosting environment to change the container (default:
-`GTM-5J6GM77L`). Copy `.env.example` as a starting point. Set `GTM_ID=` to
+`GTM-________`). Copy `.env.example` as a starting point. Set `GTM_ID=` to
 disable it; malformed IDs also disable it. Restart the server after changing
 the environment variable.
 
 The Google Analytics tag also loads in the head alongside GTM. Configure
-`GA_MEASUREMENT_ID` in the same environment (default: `G-RYE1MSPLSR`). Set it to
+`GA_MEASUREMENT_ID` in the same environment (default: `G-_______`). Set it to
 an empty value to disable this tag independently of GTM; malformed IDs disable it
 too. Both tags share `window.dataLayer`. Avoid configuring the same Analytics
 measurement ID again inside GTM, which can duplicate page-view events.
