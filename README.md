@@ -39,6 +39,12 @@ npm run dev
 
 Visit http://localhost:8080. For production: `npm run build && npm start`.
 
+Google Tag Manager loads in the document head on every page. Set `GTM_ID` in
+`.env.local` or your hosting environment to change the container (default:
+`GTM-5J6GM77L`). Copy `.env.example` as a starting point. Set `GTM_ID=` to
+disable it; malformed IDs also disable it. Restart the server after changing
+the environment variable.
+
 ## Included
 Responsive hero, illustrative trainer and member previews, eight feature pillars,
 admin/coach/member role comparison, bexio integration explanation, workflow, pilot
