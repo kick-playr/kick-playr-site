@@ -95,6 +95,12 @@ Run translation checks with `node --test tests/intl.test.cjs`.
 
 ## News content
 
+`/robots.txt` allows all crawlers, including search engines and AI crawlers, to
+access public pages and rendering assets, and advertises `/sitemap.xml` using
+`SITE_URL`. This includes AI training crawlers. Robots rules are advisory and do
+not secure private content; protect any future private routes with server-side
+authentication and authorisation. Do not list secret paths in robots.txt.
+
 `/sitemap.xml` is generated on each request and includes the homepage, news index
 and every published news slug across all four languages. Drafts and future-dated
 posts are excluded using the same rules as the news pages. Translations share a
