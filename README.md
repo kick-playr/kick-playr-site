@@ -45,6 +45,12 @@ Google Tag Manager loads in the document head on every page. Set `GTM_ID` in
 disable it; malformed IDs also disable it. Restart the server after changing
 the environment variable.
 
+The Google Analytics tag also loads in the head alongside GTM. Configure
+`GA_MEASUREMENT_ID` in the same environment (default: `G-RYE1MSPLSR`). Set it to
+an empty value to disable this tag independently of GTM; malformed IDs disable it
+too. Both tags share `window.dataLayer`. Avoid configuring the same Analytics
+measurement ID again inside GTM, which can duplicate page-view events.
+
 ## Included
 Responsive hero, illustrative trainer and member previews, eight feature pillars,
 admin/coach/member role comparison, bexio integration explanation, workflow, pilot

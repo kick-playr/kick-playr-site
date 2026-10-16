@@ -15,6 +15,8 @@ export default async function RootLayout({children}: {children: React.ReactNode}
     const {locale} = await getTranslations();
     const gtmId = (process.env.GTM_ID ?? 'GTM-5J6GM77L').trim();
     const enableGtm = /^GTM-[A-Z0-9]+$/.test(gtmId);
+    const gaId = (process.env.GA_MEASUREMENT_ID ?? 'G-RYE1MSPLSR').trim();
+    const enableGa = /^G-[A-Z0-9]+$/.test(gaId);
     return <html lang={locale}>
         <head>
             {enableGtm && <script id="google-tag-manager" dangerouslySetInnerHTML={{__html: `
@@ -23,6 +25,14 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${gtmId}');`}} />}
+            {enableGa && <>
+                <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+                <script id="google-analytics" dangerouslySetInnerHTML={{__html: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaId}');`}} />
+            </>}
         </head>
         <body>
             {enableGtm && <noscript><iframe
