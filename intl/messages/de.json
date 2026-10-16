@@ -109,7 +109,7 @@
   "faqAudienceQuestion": "Für wen ist kick-playr gedacht?",
   "faqAudienceAnswer": "Für Schweizer Amateurfussballvereine mit bexio und Abläufen für Administration, Trainer:innen, Mitglieder und Eltern. Ob euer Setup zum geplanten Pilot passt, besprechen wir gemeinsam.",
   "faqAvailabilityQuestion": "Was gibt es bereits?",
-  "faqAvailabilityAnswer": "Die Produktbasis ist eine operative deutschsprachige Schweizer Vereinsapp. kick-playr ist das geplante Angebot für weitere Vereine. Vereinseinrichtung, aktivierte Funktionen und Pilotbedingungen werden separat vereinbart. Die Vorschau hier ist beispielhaft.",
+  "faqAvailabilityAnswer": "Der ursprüngliche Dienst wurde für den FC Rot-Weiss Winikon (FCRWW) in Uster entwickelt, den ersten Pilotverein für den SaaS-Service kick-playr. Die operative Referenzapp ist auf Deutsch. Einrichtung, aktivierte Funktionen und Pilotbedingungen für weitere Vereine werden separat vereinbart. Die Vorschauen auf dieser Seite sind beispielhaft.",
   "faqBexioQuestion": "Brauchen wir bexio?",
   "faqBexioAnswer": "Ja. Ein bexio-Konto ist die Mindestvoraussetzung für Mitgliederdaten, Rechnungen und Zahlungsstatus. Pingen für Briefversand und ein angebundenes Postfach zur Überwachung unzustellbarer E-Mails sind optional. Andere ERP-Anbindungen gehören nicht zum aktuellen Umfang.",
   "faqIntegrationsQuestion": "Sind externe Aufnahmeschritte automatisch?",
@@ -173,5 +173,11 @@
   "faqDeliveryQuestion": "Wie lassen sich Rechnungen teilen oder versenden?",
   "faqDeliveryAnswer": "Die Administration kann vorbereitete Rechnungslinks via WhatsApp teilen. Für gedruckte Rechnungen oder Mahnungen aktiviert ihr optional Pingen und löst die Briefsendung bei Bedarf aus. Die Postfach-Anbindung für unzustellbare E-Mails ist separat optional.",
   "faqSetupQuestion": "Was braucht es für die Einrichtung?",
-  "faqSetupAnswer": "Vereinsname und Logo, E-Mail-Texte, bexio-OAuth-Autorisierung und bexio-Zuordnungen, Sportshop-Angaben sowie die Namen der Vereinsleitung und Ansprechpersonen. Pingen und Postfach-Zugriff werden nur auf Wunsch eingerichtet."
+  "faqSetupAnswer": "Vereinsname und Logo, E-Mail-Texte, bexio-OAuth-Autorisierung und bexio-Zuordnungen, Sportshop-Angaben sowie die Namen der Vereinsleitung und Ansprechpersonen. Pingen und Postfach-Zugriff werden nur auf Wunsch eingerichtet.",
+  "externalLinkNewTab": "Öffnet in einem neuen Tab",
+  "originEyebrow": "FÜR EINEN ECHTEN VEREIN ENTWICKELT",
+  "originTitle": "Vom FC RWW zu kick-playr.",
+  "originDescription": "Die ursprüngliche Version des Dienstes wurde für den FC Rot-Weiss Winikon (FCRWW) in Uster entwickelt und umgesetzt. FCRWW ist der erste Pilotverein für den SaaS-Service kick-playr.",
+  "originBadge": "ERSTER PILOTVEREIN",
+  "originAppLink": "FC-RWW-App öffnen"
 }

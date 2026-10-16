@@ -12,6 +12,7 @@ import {
     ChevronDown,
     ClipboardList,
     CreditCard,
+    ExternalLink,
     Menu,
     MessageCircle,
     Phone,
@@ -27,6 +28,11 @@ export default function Home({locale, messages: t}: {locale: Locale; messages: M
     const router = useRouter();
     const [changingLanguage, startLanguageChange] = useTransition();
     const [languageError, setLanguageError] = useState(false);
+    const linkBexio = (text: string) => text.split(/(\bbexio\b)/gi).map((part, index) =>
+        /^bexio$/i.test(part) ? <a key={index} className="bexio-link" href="https://www.bexio.com/"
+            target="_blank" rel="noopener noreferrer" aria-label={part + ' — ' + t.externalLinkNewTab}
+            title={t.externalLinkNewTab}>{part}<ExternalLink aria-hidden="true"/></a> : part
+    );
     const features = [
         {icon: Users, title: t.featureTeamsTitle, desc: t.featureTeamsDescription},
         {icon: ClipboardList, title: t.featureTrialsTitle, desc: t.featureTrialsDescription},
@@ -65,7 +71,7 @@ export default function Home({locale, messages: t}: {locale: Locale; messages: M
     const [email, setEmail] = useState('');
     const [club, setClub] = useState('');
     const [submitted, setSubmitted] = useState(false);
-    const [faq, setFaq] = useState<number | null>(null);
+
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         const subject = encodeURIComponent(t.pilotEmailSubject + ' — ' + club);
@@ -98,7 +104,7 @@ export default function Home({locale, messages: t}: {locale: Locale; messages: M
                         }}>
                     {locales.map(language => <option key={language} value={language} lang={language}>{languageNames[language]}</option>)}
                 </select>
-                {languageError && <span className="language-error" role="alert">{t.languageChangeError}</span>}
+                {languageError && <span className="language-error" role="alert">{linkBexio(t.languageChangeError)}</span>}
             </div>
             <button className="menu" onClick={() => setMenu(!menu)} aria-label={t.toggleMenu} aria-expanded={menu} aria-controls="primary-nav">{menu ? <X/> :
                 <Menu/>}</button>
@@ -108,175 +114,192 @@ export default function Home({locale, messages: t}: {locale: Locale; messages: M
                 <div className="hero-glow"/>
                 <div className="wrap hero-grid">
                     <div className="hero-copy">
-                        <div className="eyebrow"><span className="dot"/> {t.heroEyebrow}</div>
-                        <h1>{t.lessAdmin}<br/><em>{t.moreFootball}</em></h1><p>{t.heroDescription}</p>
+                        <div className="eyebrow"><span className="dot"/> {linkBexio(t.heroEyebrow)}</div>
+                        <h1>{linkBexio(t.lessAdmin)}<br/><em>{linkBexio(t.moreFootball)}</em></h1><p>{linkBexio(t.heroDescription)}</p>
                         <div className="actions"><a className="btn primary" href="#pilot">{t.joinThePilot}<ArrowRight
                             size={18}/></a><a className="btn secondary" href="#features">{t.exploreFeatures}<ArrowRight
                             size={17}/></a></div>
-                        <div className="hero-foot"><span>{t.heroFoundation}</span><span>{t.heroRoles}</span>
+                        <div className="hero-foot"><span>{linkBexio(t.heroFoundation)}</span><span>{linkBexio(t.heroRoles)}</span>
                         </div>
                     </div>
                     <div className="visual">
                         <div className="pitch-lines"/>
                         <div className="dashboard">
                             <div className="dash-top"><Image src="/kick-playr-logo.png" alt="kick-playr" width={40} height={40}/><span
-                                className="pill">{t.previewLabel}</span><span className="avatar">FC</span></div>
-                            <div className="dash-hello">{t.previewTitle}</div>
-                            <div className="dash-sub">{t.previewDescription}</div>
+                                className="pill">{linkBexio(t.previewLabel)}</span><span className="avatar">FC</span></div>
+                            <div className="dash-hello">{linkBexio(t.previewTitle)}</div>
+                            <div className="dash-sub">{linkBexio(t.previewDescription)}</div>
                             <div className="stats workflow-stats">
-                                <div><small>{t.previewTeamLabel}</small><strong>{t.previewTeamValue}</strong><span>{t.previewTeamDetail}</span></div>
-                                <div><small>{t.previewBillingLabel}</small><strong>{t.previewBillingValue}</strong><span>{t.previewBillingDetail}</span>
+                                <div><small>{linkBexio(t.previewTeamLabel)}</small><strong>{linkBexio(t.previewTeamValue)}</strong><span>{linkBexio(t.previewTeamDetail)}</span></div>
+                                <div><small>{linkBexio(t.previewBillingLabel)}</small><strong>{linkBexio(t.previewBillingValue)}</strong><span>{linkBexio(t.previewBillingDetail)}</span>
                                 </div>
                             </div>
                             <div className="dash-panel">
-                                <div className="panel-title">{t.previewPanelTitle}<CalendarDays size={16}/></div>
+                                <div className="panel-title">{linkBexio(t.previewPanelTitle)}<CalendarDays size={16}/></div>
                                 <div className="event">
                                     <div className="date"><CalendarDays size={22}/></div>
-                                    <div><b>{t.previewTrainingTitle}</b><small>{t.previewTrainingDetail}</small></div>
+                                    <div><b>{linkBexio(t.previewTrainingTitle)}</b><small>{linkBexio(t.previewTrainingDetail)}</small></div>
                                     <ArrowRight size={16}/></div>
                                 <div className="event">
                                     <div className="date"><Phone size={22}/></div>
-                                    <div><b>{t.previewEmergencyTitle}</b><small>{t.previewEmergencyDetail}</small></div>
+                                    <div><b>{linkBexio(t.previewEmergencyTitle)}</b><small>{linkBexio(t.previewEmergencyDetail)}</small></div>
                                     <ArrowRight size={16}/></div>
                                 <div className="event">
                                     <div className="date"><Users size={22}/></div>
-                                    <div><b>{t.previewTrialsTitle}</b><small>{t.previewTrialsDetail}</small></div>
+                                    <div><b>{linkBexio(t.previewTrialsTitle)}</b><small>{linkBexio(t.previewTrialsDetail)}</small></div>
                                     <ArrowRight size={16}/></div>
                                 <div className="event">
                                     <div className="date"><MessageCircle size={22}/></div>
-                                    <div><b>{t.previewChatTitle}</b><small>{t.previewChatDetail}</small></div>
+                                    <div><b>{linkBexio(t.previewChatTitle)}</b><small>{linkBexio(t.previewChatDetail)}</small></div>
                                     <ArrowRight size={16}/></div>
                             </div>
-                            <div className="dash-bottom"><span><Users size={15}/> {t.teams}</span><span><Wallet size={15}/> {t.billingLabel}</span><span><MessageCircle
-                                size={15}/> {t.chatLabel}</span></div>
+                            <div className="dash-bottom"><span><Users size={15}/> {linkBexio(t.teams)}</span><span><Wallet size={15}/> {linkBexio(t.billingLabel)}</span><span><MessageCircle
+                                size={15}/> {linkBexio(t.chatLabel)}</span></div>
                         </div>
                         <div className="floating">
                             <div className="float-icon"><Check size={18}/></div>
-                            <div><b>{t.floatingTitle}</b><small>{t.floatingDescription}</small></div>
+                            <div><b>{linkBexio(t.floatingTitle)}</b><small>{linkBexio(t.floatingDescription)}</small></div>
                         </div>
                     </div>
                 </div>
             </section>
             <section className="strip">
-                <div className="wrap strip-inner"><span>{t.stripOne}</span><span>{t.stripTwo}</span><span>{t.moreTimeOnThePitch}</span>
+                <div className="wrap strip-inner"><span>{linkBexio(t.stripOne)}</span><span>{linkBexio(t.stripTwo)}</span><span>{linkBexio(t.moreTimeOnThePitch)}</span>
+                </div>
+            </section>
+            <section className="wrap pilot-reference" aria-labelledby="origin-title">
+                <div className="pilot-reference-card">
+                    <div>
+                        <div className="kicker">{t.originEyebrow}</div>
+                        <h2 id="origin-title">{t.originTitle}</h2>
+                        <p>{t.originDescription}</p>
+                    </div>
+                    <div className="pilot-reference-club">
+                        <span className="pricing-label">{t.originBadge}</span>
+                        <strong>FC Rot-Weiss Winikon</strong>
+                        <span>Uster · FCRWW</span>
+                        <a href="https://app.fcrww.ch" target="_blank" rel="noopener noreferrer"
+                           className="btn secondary" aria-label={t.originAppLink + ' — ' + t.externalLinkNewTab}
+                           title={t.externalLinkNewTab}>{t.originAppLink}<ExternalLink size={17} aria-hidden="true"/></a>
+                    </div>
                 </div>
             </section>
             <section className="section wrap" id="features">
                 <div className="section-top">
                     <div>
-                        <div className="kicker">{t.featuresEyebrow}</div>
-                        <h2>{t.featuresTitle}<br/><span>{t.featuresAccent}</span></h2></div>
-                    <p>{t.featuresDescription}</p></div>
+                        <div className="kicker">{linkBexio(t.featuresEyebrow)}</div>
+                        <h2>{linkBexio(t.featuresTitle)}<br/><span>{linkBexio(t.featuresAccent)}</span></h2></div>
+                    <p>{linkBexio(t.featuresDescription)}</p></div>
                 <div className="feature-grid">{features.map(f => <article className="feature" key={f.title}>
                     <div className="feature-icon">
                         <f.icon size={23}/>
                     </div>
-                    <h3>{f.title}</h3><p>{f.desc}</p><ArrowRight className="feature-arrow" size={18}/></article>)}</div>
+                    <h3>{linkBexio(f.title)}</h3><p>{linkBexio(f.desc)}</p><ArrowRight className="feature-arrow" size={18}/></article>)}</div>
             </section>
             <section className="section wrap roles" aria-labelledby="roles-title">
-                <div className="bexio-note"><h3>{t.bexioTitle}</h3><p>{t.bexioDescription}</p></div>
-                <div className="kicker">{t.rolesEyebrow}</div>
-                <h2 id="roles-title">{t.rolesTitle}</h2>
-                <p className="roles-intro">{t.rolesDescription}</p>
+                <div className="bexio-note"><h3>{linkBexio(t.bexioTitle)}</h3><p>{linkBexio(t.bexioDescription)}</p></div>
+                <div className="kicker">{linkBexio(t.rolesEyebrow)}</div>
+                <h2 id="roles-title">{linkBexio(t.rolesTitle)}</h2>
+                <p className="roles-intro">{linkBexio(t.rolesDescription)}</p>
                 <div className="role-grid">{roles.map(role => <article key={role.title}>
-                    <h3>{role.title}</h3><p>{role.desc}</p>
+                    <h3>{linkBexio(role.title)}</h3><p>{linkBexio(role.desc)}</p>
                 </article>)}</div>
             </section>
             <section className="section wrap member-preview-grid" aria-labelledby="member-preview-title">
                 <div>
-                    <div className="kicker">{t.memberPreviewEyebrow}</div>
-                    <h2 id="member-preview-title">{t.memberPreviewTitle}<br/><span>{t.memberPreviewAccent}</span></h2>
-                    <p className="member-preview-description">{t.memberPreviewDescription}</p>
+                    <div className="kicker">{linkBexio(t.memberPreviewEyebrow)}</div>
+                    <h2 id="member-preview-title">{linkBexio(t.memberPreviewTitle)}<br/><span>{linkBexio(t.memberPreviewAccent)}</span></h2>
+                    <p className="member-preview-description">{linkBexio(t.memberPreviewDescription)}</p>
                 </div>
                 <div className="member-preview-card">
                     <div className="dash-top">
                         <Image src="/kick-playr-logo.png" alt="" width={48} height={48}/>
-                        <span className="pill">{t.memberPreviewLabel}</span>
+                        <span className="pill">{linkBexio(t.memberPreviewLabel)}</span>
                     </div>
-                    <h3>{t.memberCardTitle}</h3>
-                    <p className="member-preview-note">{t.memberPreviewNote}</p>
+                    <h3>{linkBexio(t.memberCardTitle)}</h3>
+                    <p className="member-preview-note">{linkBexio(t.memberPreviewNote)}</p>
                     <div className="member-badge">
                         <ShieldCheck size={28} aria-hidden="true"/>
-                        <div><b>{t.memberBadgeTitle}</b><small>{t.memberBadgeDetail}</small></div>
+                        <div><b>{linkBexio(t.memberBadgeTitle)}</b><small>{linkBexio(t.memberBadgeDetail)}</small></div>
                     </div>
                     <div className="event">
                         <div className="date"><Users size={22}/></div>
-                        <div><b>{t.memberDataTitle}</b><small>{t.memberDataDetail}</small></div>
+                        <div><b>{linkBexio(t.memberDataTitle)}</b><small>{linkBexio(t.memberDataDetail)}</small></div>
                     </div>
                     <div className="event">
                         <div className="date"><Wallet size={22}/></div>
-                        <div><b>{t.memberClubTitle}</b><small>{t.memberClubDetail}</small></div>
+                        <div><b>{linkBexio(t.memberClubTitle)}</b><small>{linkBexio(t.memberClubDetail)}</small></div>
                     </div>
                     <div className="event">
                         <div className="date"><ClipboardList size={22}/></div>
-                        <div><b>{t.memberCorrectionTitle}</b><small>{t.memberCorrectionDetail}</small></div>
+                        <div><b>{linkBexio(t.memberCorrectionTitle)}</b><small>{linkBexio(t.memberCorrectionDetail)}</small></div>
                     </div>
-                    <p className="member-review-note"><Check size={18} aria-hidden="true"/>{t.memberReviewNote}</p>
+                    <p className="member-review-note"><Check size={18} aria-hidden="true"/>{linkBexio(t.memberReviewNote)}</p>
                 </div>
             </section>
             <section className="section how" id="how">
                 <div className="wrap">
-                    <div className="kicker">{t.workflowEyebrow}</div>
-                    <h2>{t.workflowTitle}<br/><span>{t.workflowAccent}</span></h2>
+                    <div className="kicker">{linkBexio(t.workflowEyebrow)}</div>
+                    <h2>{linkBexio(t.workflowTitle)}<br/><span>{linkBexio(t.workflowAccent)}</span></h2>
                     <div className="steps">
-                        <div><span>01</span><h3>{t.workflowTrialTitle}</h3><p>{t.workflowTrialDescription}</p></div>
-                        <div><span>02</span><h3>{t.workflowAdmissionTitle}</h3><p>{t.workflowAdmissionDescription}</p></div>
-                        <div><span>03</span><h3>{t.workflowVoucherTitle}</h3><p>{t.workflowVoucherDescription}</p></div>
+                        <div><span>01</span><h3>{linkBexio(t.workflowTrialTitle)}</h3><p>{linkBexio(t.workflowTrialDescription)}</p></div>
+                        <div><span>02</span><h3>{linkBexio(t.workflowAdmissionTitle)}</h3><p>{linkBexio(t.workflowAdmissionDescription)}</p></div>
+                        <div><span>03</span><h3>{linkBexio(t.workflowVoucherTitle)}</h3><p>{linkBexio(t.workflowVoucherDescription)}</p></div>
                     </div>
                 </div>
             </section>
             <section className="section wrap setup" aria-labelledby="setup-title">
-                <div className="kicker">{t.setupEyebrow}</div>
-                <h2 id="setup-title">{t.setupTitle}<br/><span>{t.setupAccent}</span></h2>
-                <p className="setup-intro">{t.setupDescription}</p>
+                <div className="kicker">{linkBexio(t.setupEyebrow)}</div>
+                <h2 id="setup-title">{linkBexio(t.setupTitle)}<br/><span>{linkBexio(t.setupAccent)}</span></h2>
+                <p className="setup-intro">{linkBexio(t.setupDescription)}</p>
                 <div className="integration-grid">
                     <article className="integration-required">
-                        <span className="pricing-label">{t.requiredLabel}</span>
-                        <h3>{t.bexioRequirementTitle}</h3><p>{t.bexioRequirementDescription}</p>
-                        <a href="https://www.bexio.com/" target="_blank" rel="noopener noreferrer">bexio.com <ArrowRight size={16}/></a>
+                        <span className="pricing-label">{linkBexio(t.requiredLabel)}</span>
+                        <h3>{linkBexio(t.bexioRequirementTitle)}</h3><p>{linkBexio(t.bexioRequirementDescription)}</p>
+                        <a href="https://www.bexio.com/" target="_blank" rel="noopener noreferrer" aria-label={'bexio.com — ' + t.externalLinkNewTab} title={t.externalLinkNewTab}>bexio.com <ExternalLink size={16} aria-hidden="true"/></a>
                     </article>
                     <article>
-                        <span className="pricing-label">{t.optionalLabel}</span>
-                        <h3>{t.pingenTitle}</h3><p>{t.pingenDescription}</p>
-                        <a href="https://www.pingen.com/" target="_blank" rel="noopener noreferrer">pingen.com <ArrowRight size={16}/></a>
+                        <span className="pricing-label">{linkBexio(t.optionalLabel)}</span>
+                        <h3>{linkBexio(t.pingenTitle)}</h3><p>{linkBexio(t.pingenDescription)}</p>
+                        <a href="https://www.pingen.com/" target="_blank" rel="noopener noreferrer" aria-label={'pingen.com — ' + t.externalLinkNewTab} title={t.externalLinkNewTab}>pingen.com <ExternalLink size={16} aria-hidden="true"/></a>
                     </article>
                     <article>
-                        <span className="pricing-label">{t.optionalLabel}</span>
-                        <h3>{t.mailboxTitle}</h3><p>{t.mailboxDescription}</p>
+                        <span className="pricing-label">{linkBexio(t.optionalLabel)}</span>
+                        <h3>{linkBexio(t.mailboxTitle)}</h3><p>{linkBexio(t.mailboxDescription)}</p>
                     </article>
                 </div>
-                <h3 className="onboarding-title">{t.onboardingTitle}</h3>
+                <h3 className="onboarding-title">{linkBexio(t.onboardingTitle)}</h3>
                 <ol className="onboarding-grid">{onboarding.map(([title, description]) => <li key={title}>
-                    <h4>{title}</h4><p>{description}</p>
+                    <h4>{linkBexio(title)}</h4><p>{linkBexio(description)}</p>
                 </li>)}</ol>
             </section>
             <section className="section wrap" id="pricing">
                 <div className="section-top">
                     <div>
-                        <div className="kicker">{t.pricingEyebrow}</div>
-                        <h2>{t.pricingTitle}<br/><span>{t.pricingAccent}</span></h2></div>
-                    <p>{t.pricingDescription}</p></div>
+                        <div className="kicker">{linkBexio(t.pricingEyebrow)}</div>
+                        <h2>{linkBexio(t.pricingTitle)}<br/><span>{linkBexio(t.pricingAccent)}</span></h2></div>
+                    <p>{linkBexio(t.pricingDescription)}</p></div>
                 <div className="pricing-card">
-                    <div><span className="pricing-label">{t.earlyClubAccess}</span><h3>{t.pricingCardTitle}</h3><p>{t.pricingCardDescription}</p>
-                        <div className="checks"><span><Check size={16}/> {t.pilotCheckSetup}</span><span><Check
-                            size={16}/> {t.pilotCheckRoles}</span><span><Check size={16}/> {t.pilotCheckScope}</span>
+                    <div><span className="pricing-label">{linkBexio(t.earlyClubAccess)}</span><h3>{linkBexio(t.pricingCardTitle)}</h3><p>{linkBexio(t.pricingCardDescription)}</p>
+                        <div className="checks"><span><Check size={16}/><span className="check-copy">{linkBexio(t.pilotCheckSetup)}</span></span><span><Check
+                            size={16}/><span className="check-copy">{linkBexio(t.pilotCheckRoles)}</span></span><span><Check size={16}/><span className="check-copy">{linkBexio(t.pilotCheckScope)}</span></span>
                         </div>
                     </div>
-                    <div className="pricing-action"><strong>{t.pilot}</strong><small>{t.termsSharedIndividually}</small><a
+                    <div className="pricing-action"><strong>{linkBexio(t.pilot)}</strong><small>{linkBexio(t.termsSharedIndividually)}</small><a
                         className="btn primary" href="#pilot">{t.applyForPilot}<ArrowRight size={17}/></a></div>
                 </div>
             </section>
             <section className="section pilot" id="pilot">
                 <div className="wrap pilot-grid">
                     <div>
-                        <div className="kicker">{t.bePartOfTheFirstTeam}</div>
-                        <h2>{t.yourClubDeserves}<br/><span>{t.moreFootballContinuation}</span></h2><p>{t.pilotDescription}</p>
-                        <div className="pilot-note">{t.pilotNote}</div>
+                        <div className="kicker">{linkBexio(t.bePartOfTheFirstTeam)}</div>
+                        <h2>{linkBexio(t.yourClubDeserves)}<br/><span>{linkBexio(t.moreFootballContinuation)}</span></h2><p>{linkBexio(t.pilotDescription)}</p>
+                        <div className="pilot-note">{linkBexio(t.pilotNote)}</div>
                     </div>
-                    <form onSubmit={submit} className="pilot-form"><h3>{t.joinThePilotConversation}</h3><label
-                        htmlFor="club">{t.clubName}</label><input id="club" required value={club}
+                    <form onSubmit={submit} className="pilot-form"><h3>{linkBexio(t.joinThePilotConversation)}</h3><label
+                        htmlFor="club">{linkBexio(t.clubName)}</label><input id="club" required value={club}
                                                                onChange={e => setClub(e.target.value)}
-                                                               placeholder={t.eGFcRiverside}/><label htmlFor="email">{t.workEmail}</label><input id="email" required type="email" value={email}
+                                                               placeholder={t.eGFcRiverside}/><label htmlFor="email">{linkBexio(t.workEmail)}</label><input id="email" required type="email" value={email}
                                             onChange={e => setEmail(e.target.value)} placeholder={t.youYourclubCh}/>
                         <button className="btn primary" type="submit">{t.contactUsAboutThePilot}<ArrowRight size={17}/>
                         </button>
@@ -285,19 +308,18 @@ export default function Home({locale, messages: t}: {locale: Locale; messages: M
                 </div>
             </section>
             <section className="faq wrap">
-                <div className="kicker">{t.goodToKnow}</div>
-                <h2>{t.frequentlyAskedQuestions}</h2>{questions.map(([q, a], i) =>
-                <div className="faq-item" key={q}>
-                    <button onClick={() => setFaq(faq === i ? null : i)} aria-expanded={faq === i}>{q}<ChevronDown
-                        size={20}/></button>
-                    {faq === i && <p>{a}</p>}</div>)}</section>
+                <div className="kicker">{linkBexio(t.goodToKnow)}</div>
+                <h2>{linkBexio(t.frequentlyAskedQuestions)}</h2>{questions.map(([q, a]) =>
+                <details className="faq-item" name="site-faq" key={q}>
+                    <summary><span>{linkBexio(q)}</span><ChevronDown size={20}/></summary>
+                    <p>{linkBexio(a)}</p></details>)}</section>
         </main>
         <footer>
             <div className="wrap footer-inner">
-                <div><a className="logo" href="#top"><Image src="/kick-playr-logo.png" alt="" width={56} height={56}/>kick-playr<span>.</span></a><p>{t.lessAdminMoreFootball}</p></div>
+                <div><a className="logo" href="#top"><Image src="/kick-playr-logo.png" alt="" width={56} height={56}/>kick-playr<span>.</span></a><p>{linkBexio(t.lessAdminMoreFootball)}</p></div>
                 <div><a href="#features">{t.features}</a><a href="#pricing">{t.pricing}</a><a href="#pilot">{t.joinPilot}</a></div>
             </div>
-            <div className="wrap fineprint">{t.copyrightSymbol} {new Date().getFullYear()} {t.kickPlayrConceptWebsiteBrandAndDomainAvailabilityNotYetConfirmed}</div>
+            <div className="wrap fineprint">{linkBexio(t.copyrightSymbol)} {new Date().getFullYear()} {linkBexio(t.kickPlayrConceptWebsiteBrandAndDomainAvailabilityNotYetConfirmed)}</div>
         </footer>
     </>
 }

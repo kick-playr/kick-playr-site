@@ -605,3 +605,25 @@ names and responsibilities. These onboarding requirements and opt-in distinction
 were explicitly supplied by the user; they are product/setup requirements rather
 than additional flows executed in the browser audit. The marketing site still
 uses its existing email contact form, not a live OAuth/provisioning wizard.
+
+### External service links
+
+Rendered bexio mentions now link to `https://www.bexio.com/` in a new tab, including
+headings, descriptions and FAQ text. Inline external-link icons indicate the
+navigation; labels/tooltips describe the new tab in the selected language. Existing
+service links use the same icon and `noopener noreferrer`. Metadata and form input
+values remain plain text. Native FAQ disclosures keep links separate from button
+semantics so linked brand text remains independently usable.
+
+### Original service and first pilot club
+
+The user confirmed that the original version of the service was designed and
+built for **FC Rot-Weiss Winikon (FCRWW) in Uster**, and that FCRWW is the first pilot
+club for the kick-playr SaaS service. This explicit confirmation supersedes the
+earlier provisional wording about permission to identify the reference club.
+
+A dedicated origin/first-pilot panel now presents these facts in all four
+languages, with an external-link icon and a new-tab link to `https://app.fcrww.ch`.
+The availability FAQ names the club too, while distinguishing the operational
+German reference app from setup and terms for additional clubs. No testimonial,
+club statistics, public member data or broader rollout claim has been added.

@@ -3,6 +3,11 @@
 Next.js 15 / React 19 / TypeScript marketing website for the proposed kick-playr
 club operations service, informed by the existing FC RWW application.
 
+The original service was designed and built for **FC Rot-Weiss Winikon (FCRWW) in
+Uster**, the first pilot club for the kick-playr SaaS service. Its app is available
+at [app.fcrww.ch](https://app.fcrww.ch). This origin and pilot-club relationship is
+presented on the website in all four languages.
+
 ## Product reference
 
 [Product functionality and website content brief](docs/PRODUCT-FUNCTIONALITY.md)

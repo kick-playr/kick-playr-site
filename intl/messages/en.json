@@ -109,7 +109,7 @@
   "faqAudienceQuestion": "Who is kick-playr for?",
   "faqAudienceAnswer": "Swiss grassroots football clubs using bexio, with workflows for administrators, coaches, members and parents. We’ll discuss whether your club’s setup fits the proposed pilot.",
   "faqAvailabilityQuestion": "What exists today?",
-  "faqAvailabilityAnswer": "The product reference is an operational German-language Swiss club application. kick-playr is the proposed offer for additional clubs; club onboarding, enabled features and pilot terms are agreed separately. The preview on this page is illustrative.",
+  "faqAvailabilityAnswer": "The original service was built for FC Rot-Weiss Winikon (FCRWW) in Uster, the first pilot club for the kick-playr SaaS service. The operational reference app is in German. Onboarding, enabled features and pilot terms for additional clubs are agreed separately. The previews on this page are illustrative.",
   "faqBexioQuestion": "Do we need bexio?",
   "faqBexioAnswer": "Yes. A bexio account is the minimum requirement for membership records, invoices and payment status. Pingen postal delivery and a connected mailbox for bounced-email monitoring are optional opt-ins. Other ERP connectors are outside the current scope.",
   "faqIntegrationsQuestion": "Are external onboarding steps automatic?",
@@ -173,5 +173,11 @@
   "faqDeliveryQuestion": "How can invoices be shared or posted?",
   "faqDeliveryAnswer": "Administration can share prepared invoice links via WhatsApp. For printed postal invoices or reminders, opt in to Pingen and initiate the letter delivery when needed. Mailbox integration for bounced-email monitoring is a separate opt-in.",
   "faqSetupQuestion": "What is needed for onboarding?",
-  "faqSetupAnswer": "Your club name and logo, email texts, bexio OAuth authorisation and bexio mappings, sport shop details, and the names of your club management and responsible contacts. Pingen and mailbox access are only configured if you choose them."
+  "faqSetupAnswer": "Your club name and logo, email texts, bexio OAuth authorisation and bexio mappings, sport shop details, and the names of your club management and responsible contacts. Pingen and mailbox access are only configured if you choose them.",
+  "externalLinkNewTab": "Opens in a new tab",
+  "originEyebrow": "BUILT FOR A REAL CLUB",
+  "originTitle": "From FC RWW to kick-playr.",
+  "originDescription": "The original version of the service was designed and built for FC Rot-Weiss Winikon (FCRWW) in Uster, Switzerland. FCRWW is the first pilot club for the kick-playr SaaS service.",
+  "originBadge": "FIRST PILOT CLUB",
+  "originAppLink": "Open the FC RWW app"
 }
