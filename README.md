@@ -121,3 +121,19 @@ Use filenames like my-story.en.md, my-story.de.md, my-story.fr.md and my-story.i
 See news/fcrww-joins-kick-playr-pilot.en.md for the example. Its date is an example publication date; update it to the intended publication date before publishing. Add or edit Markdown files and redeploy for production changes. In development, refresh the page to see edits.
 
 News can optionally specify image: "/news/filename.jpg" and a translated imageAlt in front matter. Place the image in public/news; it appears on cards and article pages. The FCRWW club logo was sourced from https://www.fcrww.ch/wp-content/uploads/2025/03/fcrww-lolo-400x400-1.jpg (the official website header logo).
+
+## Browser security
+
+`proxy.ts` creates a fresh script nonce for each page response and passes the
+policy to Next.js and the analytics scripts in `app/layout.tsx`. Pages already
+render dynamically for language preferences; keep them dynamic so script nonces
+match the response policy. Production does not allow inline scripts without a
+nonce or JavaScript evaluation. Development permits evaluation for Next.js tools.
+Inline styles remain allowed for React/Image and the existing component styles.
+
+The policy permits the existing Google Fonts, Google Tag Manager and Google
+Analytics resources. New tags that use other resource origins require a reviewed
+policy update. `next.config.ts` also blocks framing and MIME sniffing, restricts
+referrer information and disables unused camera, microphone and location access.
+All `.env*` files are ignored except the tracked `.env.example`; keep real values
+in local environment files or the deployment environment.
