@@ -55,7 +55,7 @@ measurement ID again inside GTM, which can duplicate page-view events.
 Responsive hero, illustrative trainer and member previews, eight feature pillars,
 admin/coach/member role comparison, bexio integration explanation, workflow, pilot
 pricing, eight-question FAQ, email-based pilot contact form, mobile navigation and language
-selector. The supplied logo is `public/kick-playr-logo.png`; `public/favicon.ico`
+selector. The supplied logo is `public/kick-playr-logo-white.png`; `public/favicon.ico`
 contains multiple icon sizes. The original concept board remains in
 `public/brand-concept.png`.
 

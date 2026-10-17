@@ -4,7 +4,7 @@ import SiteHeader from './site-header';
 import SiteFooter from './site-footer';
 import NewsCards from './news-cards';
 import type {NewsSummary} from '../lib/news';
-import Image from 'next/image';
+import ThemeLogo from './theme-logo';
 import type {Locale} from '../intl/locale';
 import type {Messages} from '../intl/messages';
 import {
@@ -94,7 +94,7 @@ export default function Home({locale, messages: t, news}: {locale: Locale; messa
                     <div className="visual">
                         <div className="pitch-lines"/>
                         <div className="dashboard">
-                            <div className="dash-top"><Image src="/kick-playr-logo.png" alt="kick-playr" width={40} height={40}/><span
+                            <div className="dash-top"><ThemeLogo alt="kick-playr" width={40} height={40}/><span
                                 className="pill">{linkBexio(t.previewLabel)}</span><span className="avatar">FC</span></div>
                             <div className="dash-hello">{linkBexio(t.previewTitle)}</div>
                             <div className="dash-sub">{linkBexio(t.previewDescription)}</div>
@@ -182,7 +182,7 @@ export default function Home({locale, messages: t, news}: {locale: Locale; messa
                 </div>
                 <div className="member-preview-card">
                     <div className="dash-top">
-                        <Image src="/kick-playr-logo.png" alt="" width={48} height={48}/>
+                        <ThemeLogo alt="" width={48} height={48}/>
                         <span className="pill">{linkBexio(t.memberPreviewLabel)}</span>
                     </div>
                     <h3>{linkBexio(t.memberCardTitle)}</h3>

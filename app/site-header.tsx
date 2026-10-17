@@ -1,6 +1,6 @@
 'use client';
-import {useState, useTransition} from 'react';
-import Image from 'next/image';
+import {useEffect, useState, useTransition} from 'react';
+import ThemeLogo from './theme-logo';
 import {useRouter} from 'next/navigation';
 import {setLocale} from '../intl/actions';
 import {locales, type Locale} from '../intl/locale';
@@ -14,7 +14,9 @@ const router = useRouter();
 const [changingLanguage, startLanguageChange] = useTransition();
 const [languageError, setLanguageError] = useState(false);
 const [menu, setMenu] = useState(false);
-return <>        <header className="nav wrap"><a href="/" className="logo"><Image src="/kick-playr-logo.png" alt="" width={88} height={88} priority/>kick-playr<span>.</span></a>
+const [theme, setTheme] = useState('system');
+useEffect(() => { setTheme(document.documentElement.dataset.theme ?? 'system'); }, []);
+return <>        <header className="nav wrap"><a href="/" className="logo"><ThemeLogo alt="" width={88} height={88} priority/>kick-playr<span>.</span></a>
             <nav id="primary-nav" className={menu ? 'links open' : 'links'}><a onClick={() => setMenu(false)}
                                                               href="/#features">{t.features}</a><a
                 onClick={() => setMenu(false)} href="/#how">{t.howItWorks}</a><a onClick={() => setMenu(false)}
@@ -40,6 +42,17 @@ return <>        <header className="nav wrap"><a href="/" className="logo"><Imag
                 </select>
                 {languageError && <span className="language-error" role="alert">{t.languageChangeError}</span>}
             </div>
+            <select className="theme-select" aria-label={t.theme} value={theme}
+                    onChange={event => {
+                        const nextTheme = event.target.value;
+                        document.documentElement.dataset.theme = nextTheme;
+                        document.cookie = `theme=${nextTheme}; Path=/; Max-Age=31536000; SameSite=Lax`;
+                        setTheme(nextTheme);
+                    }}>
+                <option value="system">{t.themeSystem}</option>
+                <option value="light">{t.themeWhite}</option>
+                <option value="dark">{t.themeBlack}</option>
+            </select>
             <button className="menu" onClick={() => setMenu(!menu)} aria-label={t.toggleMenu} aria-expanded={menu} aria-controls="primary-nav">{menu ? <X/> :
                 <Menu/>}</button>
         </header>

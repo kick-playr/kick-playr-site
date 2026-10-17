@@ -186,5 +186,9 @@
   "newsReadMore": "Artikel lesen",
   "newsAll": "Alle Neuigkeiten",
   "newsBack": "Zurück zu Neuigkeiten",
-  "newsHome": "Zur Startseite"
+  "newsHome": "Zur Startseite",
+  "theme": "Design",
+  "themeSystem": "System",
+  "themeWhite": "Weiss",
+  "themeBlack": "Schwarz"
 }

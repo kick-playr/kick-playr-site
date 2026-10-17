@@ -186,5 +186,9 @@
   "newsReadMore": "Read the story",
   "newsAll": "All news",
   "newsBack": "Back to news",
-  "newsHome": "Back to home"
+  "newsHome": "Back to home",
+  "theme": "Theme",
+  "themeSystem": "System",
+  "themeWhite": "White",
+  "themeBlack": "Black"
 }
