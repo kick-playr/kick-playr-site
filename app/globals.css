@@ -299,3 +299,37 @@ img.theme-logo-light{display:none}
   .nav .logo{font-size:19px;gap:4px}
   .nav .logo img{width:24px;height:24px}
 }
+
+/* Contact details and the person behind kick-playr. */
+.contact-intro{font-size:18px;line-height:1.8;color:var(--text-secondary);max-width:60ch}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:48px;margin-top:36px;align-items:start}
+.contact-card{padding:32px;border:1px solid var(--tint-border);border-radius:16px;background:linear-gradient(125deg,var(--green-start),var(--green-end));min-width:0}
+.contact-card h3,.contact-bio h3{font-size:28px;line-height:1.35;letter-spacing:-1px;margin:0 0 24px}
+.contact-card address{font-style:normal;font-size:18px;line-height:1.9}
+.contact-card address a{display:inline-block;margin-top:16px;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+.contact-person{border-top:1px solid var(--border);margin-top:28px;padding-top:24px;display:grid;gap:10px}
+.contact-person>span{font-size:14px;color:var(--text-secondary)}
+.contact-person strong{font-size:20px;line-height:1.5}.contact-person strong span{font-weight:400;color:var(--text-secondary)}
+.contact-bio{min-width:0}.contact-bio h3{margin-top:16px}.contact-bio p{font-size:17px;line-height:1.85;color:var(--text-secondary)}
+.contact-section a:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:32px}.contact-card{padding:24px}.contact-bio h3{font-size:26px}}
+
+.contact-profile-links{display:flex;flex-wrap:wrap;gap:16px 28px;margin-top:24px}.contact-profile-links a{min-height:44px;max-width:100%}
+
+.contact-org-link{margin-top:20px;min-height:44px;max-width:100%}
+
+/* Keep navigation available and anchor destinations clear of its responsive height. */
+html{scroll-padding-top:calc(var(--site-header-height, 96px) + 16px)}
+.site-header-shell{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--border)}
+
+/* Copyright sits with the brand in one compact footer row. */
+footer{padding:20px 0}
+.footer-inner{align-items:center;gap:16px 32px}
+.footer-brand{display:flex;align-items:center;gap:24px;min-width:0}
+.footer-brand .logo{font-size:24px;white-space:nowrap}
+.footer-brand p{margin:0;font-size:12px;line-height:1.7}
+.footer-inner>div:last-child{flex-wrap:wrap;gap:8px 24px}
+@media(max-width:900px){.footer-brand{flex-wrap:wrap;gap:8px 20px}}
+@media(max-width:620px){footer{padding:16px 0}.footer-inner{align-items:flex-start;gap:12px}.footer-brand p{font-size:13px}}
+
+.club-link{text-decoration:underline;text-decoration-color:var(--lime);text-underline-offset:.18em}.club-link svg{display:inline;vertical-align:baseline;margin-left:.25em}.club-link:hover{color:var(--lime)}

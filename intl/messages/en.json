@@ -190,5 +190,17 @@
   "theme": "Theme",
   "themeSystem": "System",
   "themeWhite": "White",
-  "themeBlack": "Black"
+  "themeBlack": "Black",
+  "contact": "Contact",
+  "contactEyebrow": "LET’S TALK FOOTBALL",
+  "contactTitle": "A person behind the platform.",
+  "contactDescription": "Questions about kick-playr or the pilot? Get in touch with Lorenz aka Lolo.",
+  "contactPerson": "Contact person",
+  "contactAbout": "About Lorenz",
+  "contactBio": "Lorenz Hänggi, also known as Lolo, has more than 30 years of software engineering experience across large enterprises, small startups and consulting, in Switzerland and the United States. He studied at ETH Zurich and has worked on software and innovation projects at AXA.",
+  "contactClubBio": "At FC Rot-Weiss Winikon, he coaches young players and is a member of the club’s management committee, responsible for administration and J+S (Youth+Sport). He also developed the club’s trainer app, connecting team information, trial training, invoices and vouchers. That practical club experience informs kick-playr.",
+  "contactLinkedIn": "View Lorenz on LinkedIn",
+  "contactHackathons": "He has taken part in many hackathons, including HackZurich, internal AXA hackathons in Switzerland, and the Microsoft Hackathon in 2018 and 2019 in the Seattle area, Washington, USA.",
+  "contactGitHub": "Explore lolo8304 on GitHub",
+  "contactGitHubOrg": "kick-playr on GitHub"
 }

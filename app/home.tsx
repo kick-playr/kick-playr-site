@@ -283,6 +283,35 @@ export default function Home({locale, messages: t, news}: {locale: Locale; messa
                 <details className="faq-item" name="site-faq" key={q}>
                     <summary><span>{linkBexio(q)}</span><ChevronDown size={20}/></summary>
                     <p>{linkBexio(a)}</p></details>)}</section>
+            <section id="contact" className="wrap section contact-section" aria-labelledby="contact-title">
+                <div className="kicker">{t.contactEyebrow}</div>
+                <h2 id="contact-title">{t.contact}</h2>
+                <p className="contact-intro">{t.contactDescription}</p>
+                <div className="contact-grid">
+                    <div className="contact-card">
+                        <h3>kick-playr.ch</h3>
+                        <address>Gablerackerstrasse 4<br/>8615 Wermatswil<br/>
+                            <a href="mailto:info@kick-playr.ch">info@kick-playr.ch</a>
+                        </address>
+                        <a className="news-read contact-org-link" href="https://github.com/kick-playr" target="_blank" rel="noopener noreferrer"
+                            aria-label={t.contactGitHubOrg + ' — ' + t.externalLinkNewTab}>{t.contactGitHubOrg}<ExternalLink size={17} aria-hidden="true"/></a>
+                        <div className="contact-person"><span>{t.contactPerson}</span><strong>Lorenz Hänggi <span>aka Lolo</span></strong></div>
+                        <div className="contact-profile-links"><a className="news-read" href="https://ch.linkedin.com/in/lorenzhaenggi" target="_blank" rel="noopener noreferrer"
+                            aria-label={t.contactLinkedIn + ' — ' + t.externalLinkNewTab}>{t.contactLinkedIn}<ExternalLink size={17} aria-hidden="true"/></a>
+                        <a className="news-read" href="https://github.com/lolo8304" target="_blank" rel="noopener noreferrer"
+                            aria-label={t.contactGitHub + ' — ' + t.externalLinkNewTab}>{t.contactGitHub}<ExternalLink size={17} aria-hidden="true"/></a></div>
+                    </div>
+                    <article className="contact-bio" aria-labelledby="contact-bio-title">
+                        <div className="kicker">{t.contactAbout}</div>
+                        <h3 id="contact-bio-title">{t.contactTitle}</h3>
+                        <p>{t.contactBio}</p><p>{t.contactClubBio.split(/(FC Rot-Weiss Winikon)/).map((part, index) =>
+                            part === 'FC Rot-Weiss Winikon' ? <a key={index} className="club-link" href="https://fcrww.ch" target="_blank" rel="noopener noreferrer"
+                                aria-label={part + ' — ' + t.externalLinkNewTab}>{part}<ExternalLink size={14} aria-hidden="true"/></a> : part
+                        )}</p><p>{t.contactHackathons}</p>
+
+                    </article>
+                </div>
+            </section>
         </main>
         <SiteFooter messages={t}/>
     </>

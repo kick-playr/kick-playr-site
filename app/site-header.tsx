@@ -30,6 +30,19 @@ function LanguageIcon({locale}: {locale: Locale}) {
 }
 
 export default function SiteHeader({locale, messages: t}: {locale: Locale; messages: Messages}) {
+const headerRef = useRef<HTMLDivElement>(null);
+useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const updateHeight = () => document.documentElement.style.setProperty('--site-header-height', `${header.getBoundingClientRect().height}px`);
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(header);
+    return () => {
+        observer.disconnect();
+        document.documentElement.style.removeProperty('--site-header-height');
+    };
+}, []);
 const router = useRouter();
 const [changingLanguage, startLanguageChange] = useTransition();
 const [languageError, setLanguageError] = useState(false);
@@ -56,13 +69,13 @@ useEffect(() => {
 }, [languageOpen]);
 const [theme, setTheme] = useState('system');
 useEffect(() => { setTheme(document.documentElement.dataset.theme ?? 'system'); }, []);
-return <>        <header className="nav wrap"><a href="/" className="logo"><ThemeLogo alt="" width={56} height={56} priority/><span className="brand-name">kick-playr<b>.</b></span></a>
+return <div ref={headerRef} className="site-header-shell">        <header className="nav wrap"><a href="/" className="logo"><ThemeLogo alt="" width={56} height={56} priority/><span className="brand-name">kick-playr<b>.</b></span></a>
             <div className="navigation-row">
             <nav id="primary-nav" className="links"><a
                                                               href="/#features">{t.features}</a><a
                 href="/#how">{t.howItWorks}</a><a
                                                                               href="/#pricing">{t.pricing}</a><a
-                href="/#pilot">{t.forClubs}</a><a href="/news">{t.news}</a>
+                href="/#pilot">{t.forClubs}</a><a href="/news">{t.news}</a><a href="/#contact">{t.contact}</a>
             </nav>
 
                 <div ref={languageRef} className="language-control" aria-busy={changingLanguage}
@@ -126,5 +139,5 @@ return <>        <header className="nav wrap"><a href="/" className="logo"><Them
                         }}><Icon size={20} aria-hidden="true"/></button>)}
                 </div>
         </header>
-</>;
+</div>;
 }
