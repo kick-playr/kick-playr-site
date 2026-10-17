@@ -5,7 +5,7 @@ import {useRouter} from 'next/navigation';
 import {setLocale} from '../intl/actions';
 import {locales, type Locale} from '../intl/locale';
 import type {Messages} from '../intl/messages';
-import {ArrowRight, ChevronDown, Menu, Monitor, Moon, Sun, X} from 'lucide-react';
+import {ArrowRight, ChevronDown, Monitor, Moon, Sun} from 'lucide-react';
 
 const languageNames: Record<Locale, string> = {en: 'English', de: 'Deutsch', fr: 'Français', it: 'Italiano'};
 
@@ -54,44 +54,17 @@ useEffect(() => {
         document.removeEventListener('keydown', closeOnEscape);
     };
 }, [languageOpen]);
-const [menu, setMenu] = useState(false);
-const headerRef = useRef<HTMLElement>(null);
-const menuButtonRef = useRef<HTMLButtonElement>(null);
-useEffect(() => {
-    if (!menu) return;
-    const closeOnEscape = (event: KeyboardEvent) => {
-        if (event.key === 'Escape') {
-            setMenu(false);
-            menuButtonRef.current?.focus();
-        }
-    };
-    const closeOutside = (event: PointerEvent) => {
-        if (event.target instanceof Node && !headerRef.current?.contains(event.target)) setMenu(false);
-    };
-    const desktop = window.matchMedia('(min-width: 1440px)');
-    const closeOnDesktop = () => { if (desktop.matches) setMenu(false); };
-    document.addEventListener('keydown', closeOnEscape);
-    document.addEventListener('pointerdown', closeOutside);
-    desktop.addEventListener('change', closeOnDesktop);
-    return () => {
-        document.removeEventListener('keydown', closeOnEscape);
-        document.removeEventListener('pointerdown', closeOutside);
-        desktop.removeEventListener('change', closeOnDesktop);
-    };
-}, [menu]);
 const [theme, setTheme] = useState('system');
 useEffect(() => { setTheme(document.documentElement.dataset.theme ?? 'system'); }, []);
-return <>        <header ref={headerRef} className="nav wrap"><a href="/" className="logo"><ThemeLogo alt="" width={56} height={56} priority/><span className="brand-name">kick-playr<b>.</b></span></a>
-            <button ref={menuButtonRef} type="button" className="menu" onClick={() => { setLanguageOpen(false); setMenu(!menu); }} aria-label={t.toggleMenu} aria-expanded={menu} aria-controls="primary-nav">{menu ? <X/> :
-                <Menu/>}</button>
-            <nav id="primary-nav" className={menu ? 'links open' : 'links'}><a onClick={() => setMenu(false)}
+return <>        <header className="nav wrap"><a href="/" className="logo"><ThemeLogo alt="" width={56} height={56} priority/><span className="brand-name">kick-playr<b>.</b></span></a>
+            <div className="navigation-row">
+            <nav id="primary-nav" className="links"><a
                                                               href="/#features">{t.features}</a><a
-                onClick={() => setMenu(false)} href="/#how">{t.howItWorks}</a><a onClick={() => setMenu(false)}
+                href="/#how">{t.howItWorks}</a><a
                                                                               href="/#pricing">{t.pricing}</a><a
-                onClick={() => setMenu(false)} href="/#pilot">{t.forClubs}</a><a onClick={() => setMenu(false)} href="/news">{t.news}</a>
-                <a className="nav-cta" onClick={() => setMenu(false)} href="/#pilot">{t.joinThePilot}<ArrowRight size={16}/></a>
+                href="/#pilot">{t.forClubs}</a><a href="/news">{t.news}</a>
             </nav>
-            <div className="header-controls">
+
                 <div ref={languageRef} className="language-control" aria-busy={changingLanguage}
                      onBlur={event => {
                          if (!event.currentTarget.contains(event.relatedTarget)) setLanguageOpen(false);
@@ -99,7 +72,7 @@ return <>        <header ref={headerRef} className="nav wrap"><a href="/" classN
                     <button ref={languageButtonRef} type="button" className="language-trigger"
                         aria-label={t.language + ': ' + languageNames[locale]} title={languageNames[locale]}
                         aria-expanded={languageOpen} aria-controls="language-options" disabled={changingLanguage}
-                        onClick={() => { setMenu(false); setLanguageOpen(!languageOpen); }}>
+                        onClick={() => { setLanguageOpen(!languageOpen); }}>
                         <LanguageIcon locale={locale}/><ChevronDown size={14} aria-hidden="true"/>
                     </button>
                     {languageOpen && <div id="language-options" className="language-options" role="group" aria-label={t.language}>
@@ -121,6 +94,8 @@ return <>        <header ref={headerRef} className="nav wrap"><a href="/" classN
                     </div>}
                     {languageError && <span className="language-error" role="alert">{t.languageChangeError}</span>}
                 </div>
+            </div>
+            <a className="nav-cta" href="/#pilot">{t.joinThePilot}<ArrowRight size={16}/></a>
                 <div className="theme-toggle" role="radiogroup" aria-label={t.theme}
                      onKeyDown={event => {
                          const values = ['system', 'light', 'dark'];
@@ -150,7 +125,6 @@ return <>        <header ref={headerRef} className="nav wrap"><a href="/" classN
                             setTheme(value);
                         }}><Icon size={20} aria-hidden="true"/></button>)}
                 </div>
-            </div>
         </header>
 </>;
 }
