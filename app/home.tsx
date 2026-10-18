@@ -290,7 +290,7 @@ export default function Home({locale, messages: t, news}: {locale: Locale; messa
                 <div className="contact-grid">
                     <div className="contact-card">
                         <h3>kick-playr.ch</h3>
-                        <address>Gablerackerstrasse 4<br/>8615 Wermatswil<br/>
+                        <address>Lorenz Hänggi<br/>Gablerackerstrasse 4<br/>8615 Wermatswil<br/>
                             <a href="mailto:info@kick-playr.ch">info@kick-playr.ch</a>
                         </address>
                         <a className="news-read contact-org-link" href="https://github.com/kick-playr" target="_blank" rel="noopener noreferrer"
